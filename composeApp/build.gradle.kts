@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.kotzilla)
 }
 
 kotlin {
@@ -33,6 +34,7 @@ kotlin {
             implementation(libs.androidx.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.koin.android)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -57,6 +59,8 @@ kotlin {
             implementation(libs.coil.network.ktor)
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)
+
+            implementation(libs.kotzilla.sdk.compose)
         }
     }
 }
@@ -90,4 +94,15 @@ android {
 
 dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
+}
+
+kotzilla {
+    // to manually upload files
+//    uploadMappingFile = false
+    displayLogs = true
+    site = "https://gateway-staging.kotzilla.io"
+    // Staging App - Now In Android 2025.03
+    projectFile = "kotzilla-staging.json"
+    versionName = "1.0-KOTZ"
+    composeInstrumentation = true
 }
