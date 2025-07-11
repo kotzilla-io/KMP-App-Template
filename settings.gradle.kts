@@ -11,7 +11,11 @@ pluginManagement {
             }
         }
         mavenCentral()
-        mavenLocal()
+        maven {
+            name = "kotzilla"
+            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
+        }
+//        mavenLocal()
         gradlePluginPortal()
     }
 }
@@ -25,7 +29,11 @@ dependencyResolutionManagement {
                 includeGroupAndSubgroups("com.google")
             }
         }
-        mavenLocal()
+        maven {
+            name = "kotzilla"
+            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
+        }
+//        mavenLocal()
         mavenCentral()
     }
 }
