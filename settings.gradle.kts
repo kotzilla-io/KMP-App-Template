@@ -1,4 +1,5 @@
 rootProject.name = "KMP-App-Template"
+
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -11,11 +12,7 @@ pluginManagement {
             }
         }
         mavenCentral()
-        maven {
-            name = "kotzilla"
-            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-        }
-//        mavenLocal()
+        mavenLocal()
         gradlePluginPortal()
     }
 }
@@ -29,11 +26,7 @@ dependencyResolutionManagement {
                 includeGroupAndSubgroups("com.google")
             }
         }
-        maven {
-            name = "kotzilla"
-            url = uri("https://repository.kotzilla.io/repository/kotzilla-platform/")
-        }
-//        mavenLocal()
+        mavenLocal()
         mavenCentral()
     }
 }

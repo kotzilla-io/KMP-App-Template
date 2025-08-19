@@ -103,6 +103,6 @@ kotzilla {
     site = "https://gateway-staging.kotzilla.io"
     // Staging App - Now In Android 2025.03
     projectFile = "kotzilla-staging.json"
-    versionName = "1.0-KOTZ"
+    versionName = "1.0-TEST"
     composeInstrumentation = true
 }
