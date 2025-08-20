@@ -1,3 +1,4 @@
+import io.kotzilla.gradle.ext.KotzillaKeyGeneration
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -97,12 +98,14 @@ dependencies {
 }
 
 kotzilla {
-    // to manually upload files
-//    uploadMappingFile = false
     displayLogs = true
     site = "https://gateway-staging.kotzilla.io"
-    // Staging App - Now In Android 2025.03
     projectFile = "kotzilla-staging.json"
+
+    // KMP app version
     versionName = "1.0-TEST"
+
+    //needed for Compose MP
+    keyGeneration = KotzillaKeyGeneration.COMPOSE
     composeInstrumentation = true
 }
