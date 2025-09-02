@@ -50,6 +50,7 @@ fun initKoin(koinConfig : KoinAppDeclaration? = null) {
     startKoin {
         includes(koinConfig)
         analytics {
+            setApiKey("ktz-sdk-LO5z00eVnuWCLcAEZA5wcfAiFuk9Cqv8sd9pjZGDTFE") // Available in kotzilla.json
             setEnvironment(Environment.Staging)
             onConfig {
                 refreshRate = 15_000L

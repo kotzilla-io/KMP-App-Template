@@ -16,10 +16,12 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -37,14 +39,25 @@ fun ListScreen(
     val viewModel = koinViewModel<ListViewModel>()
     val objects by viewModel.objects.collectAsStateWithLifecycle()
 
-    AnimatedContent(objects.isNotEmpty()) { objectsAvailable ->
-        if (objectsAvailable) {
-            ObjectGrid(
-                objects = objects,
-                onObjectClick = navigateToDetails,
-            )
-        } else {
-            EmptyScreenContent(Modifier.fillMaxSize())
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(top = 32.dp)
+    ) {
+        val thrower = ExceptionThrower()
+        Button(onClick = {
+            thrower.throwException()
+        }) {
+            Text("Crash app")
+        }
+        AnimatedContent(objects.isNotEmpty()) { objectsAvailable ->
+            if (objectsAvailable) {
+                ObjectGrid(
+                    objects = objects,
+                    onObjectClick = navigateToDetails,
+                )
+            } else {
+                EmptyScreenContent(Modifier.fillMaxSize())
+            }
         }
     }
 }
