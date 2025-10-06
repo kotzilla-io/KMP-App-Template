@@ -16,6 +16,7 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -36,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import com.jetbrains.kmpapp.data.MuseumObject
+import com.jetbrains.kmpapp.di.CrashMaker
 import com.jetbrains.kmpapp.screens.EmptyScreenContent
 import kmp_app_template.composeapp.generated.resources.Res
 import kmp_app_template.composeapp.generated.resources.back
@@ -48,6 +50,7 @@ import kmp_app_template.composeapp.generated.resources.label_medium
 import kmp_app_template.composeapp.generated.resources.label_repository
 import kmp_app_template.composeapp.generated.resources.label_title
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -87,6 +90,8 @@ private fun ObjectDetails(
         },
         modifier = modifier.windowInsetsPadding(WindowInsets.systemBars),
     ) { paddingValues ->
+        val crashMaker = koinInject<CrashMaker>()
+
         Column(
             Modifier
                 .verticalScroll(rememberScrollState())
@@ -104,6 +109,12 @@ private fun ObjectDetails(
             SelectionContainer {
                 Column(Modifier.padding(12.dp)) {
                     Text(obj.title, style = MaterialTheme.typography.headlineMedium)
+                    Spacer(Modifier.height(12.dp))
+                    Button(onClick = {
+                        crashMaker.boom()
+                    }) {
+                        Text("Crash app")
+                    }
                     Spacer(Modifier.height(6.dp))
                     LabeledInfo(stringResource(Res.string.label_title), obj.title)
                     LabeledInfo(stringResource(Res.string.label_artist), obj.artistDisplayName)

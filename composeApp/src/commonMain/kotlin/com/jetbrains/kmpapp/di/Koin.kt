@@ -16,6 +16,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.core.context.startKoin
 import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.KoinConfiguration
 import org.koin.dsl.includes
@@ -44,6 +45,7 @@ val dataModule = module {
 val viewModelModule = module {
     factoryOf(::ListViewModel)
     factoryOf(::DetailViewModel)
+    singleOf(::CrashMaker)
 }
 
 fun initKoin(koinConfig : KoinAppDeclaration? = null) {

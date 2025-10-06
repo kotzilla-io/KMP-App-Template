@@ -16,10 +16,12 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -27,7 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import com.jetbrains.kmpapp.data.MuseumObject
+import com.jetbrains.kmpapp.di.CrashMaker
 import com.jetbrains.kmpapp.screens.EmptyScreenContent
+import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
@@ -35,18 +39,30 @@ fun ListScreen(
     navigateToDetails: (objectId: Int) -> Unit
 ) {
     val viewModel = koinViewModel<ListViewModel>()
+    val crashMaker = koinInject<CrashMaker>()
     val objects by viewModel.objects.collectAsStateWithLifecycle()
 
-    AnimatedContent(objects.isNotEmpty()) { objectsAvailable ->
-        if (objectsAvailable) {
-            ObjectGrid(
-                objects = objects,
-                onObjectClick = navigateToDetails,
-            )
-        } else {
-            EmptyScreenContent(Modifier.fillMaxSize())
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(top = 32.dp)
+    ) {
+        Button(onClick = {
+            crashMaker.boom()
+        }) {
+            Text("Crash app")
+        }
+        AnimatedContent(objects.isNotEmpty()) { objectsAvailable ->
+            if (objectsAvailable) {
+                ObjectGrid(
+                    objects = objects,
+                    onObjectClick = navigateToDetails,
+                )
+            } else {
+                EmptyScreenContent(Modifier.fillMaxSize())
+            }
         }
     }
+
 }
 
 @Composable

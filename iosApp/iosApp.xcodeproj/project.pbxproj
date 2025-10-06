@@ -10,6 +10,7 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		51CE6CF62E9038D200D1295A /* CrashReporter in Frameworks */ = {isa = PBXBuildFile; productRef = 51CE6CF52E9038D200D1295A /* CrashReporter */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51CE6CF62E9038D200D1295A /* CrashReporter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +100,7 @@
 				7555FF77242A565900829871 /* Sources */,
 				B92378962B6B1156000C7307 /* Frameworks */,
 				7555FF79242A565900829871 /* Resources */,
+				51CE6CF32E90389200D1295A /* Kotzilla Dsym */,
 			);
 			buildRules = (
 			);
@@ -105,6 +108,7 @@
 			);
 			name = iosApp;
 			packageProductDependencies = (
+				51CE6CF52E9038D200D1295A /* CrashReporter */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* KMP App.app */;
@@ -136,6 +140,7 @@
 			);
 			mainGroup = 7555FF72242A565900829871;
 			packageReferences = (
+				51CE6CF42E9038D200D1295A /* XCRemoteSwiftPackageReference "plcrashreporter" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -159,6 +164,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		51CE6CF32E90389200D1295A /* Kotzilla Dsym */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Kotzilla Dsym";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SRCROOT/..\"\n\n./gradlew :composeApp:uploadDsymFile --dsymPath=\"$DWARF_DSYM_FOLDER_PATH\"\n";
+		};
 		F36B1CEB2AD83DDC00CB74D5 /* Compile Kotlin Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,6 +413,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		51CE6CF42E9038D200D1295A /* XCRemoteSwiftPackageReference "plcrashreporter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/microsoft/plcrashreporter";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		51CE6CF52E9038D200D1295A /* CrashReporter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51CE6CF42E9038D200D1295A /* XCRemoteSwiftPackageReference "plcrashreporter" */;
+			productName = CrashReporter;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7555FF73242A565900829871 /* Project object */;
 }
