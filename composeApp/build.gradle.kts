@@ -103,7 +103,7 @@ kotzilla {
     projectFile = "kotzilla-staging.json"
 
     // KMP app version
-    versionName = "1.0-TEST"
+    versionName = "1.0-TEST-20251007"
 
     //needed for Compose MP
     keyGeneration = KotzillaKeyGeneration.COMPOSE
