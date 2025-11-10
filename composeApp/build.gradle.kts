@@ -1,3 +1,4 @@
+import io.kotzilla.gradle.ext.KotzillaKeyGeneration
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -104,5 +105,7 @@ kotzilla {
     // Staging App - Now In Android 2025.03
     projectFile = "kotzilla-staging.json"
     versionName = "1.0-KOTZ"
+
+    keyGeneration = KotzillaKeyGeneration.COMPOSE
     composeInstrumentation = true
 }
