@@ -7,7 +7,7 @@ import com.jetbrains.kmpapp.data.MuseumRepository
 import com.jetbrains.kmpapp.data.MuseumStorage
 import com.jetbrains.kmpapp.screens.detail.DetailViewModel
 import com.jetbrains.kmpapp.screens.list.ListViewModel
-import io.kotzilla.sdk.analytics.koin.analytics
+import io.kotzilla.generated.kotzillaAnalytics
 import io.kotzilla.sdk.config.Environment
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -18,7 +18,6 @@ import org.koin.core.context.startKoin
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.KoinAppDeclaration
-import org.koin.dsl.KoinConfiguration
 import org.koin.dsl.includes
 import org.koin.dsl.module
 
@@ -51,7 +50,7 @@ val viewModelModule = module {
 fun initKoin(koinConfig : KoinAppDeclaration? = null) {
     startKoin {
         includes(koinConfig)
-        analytics {
+        kotzillaAnalytics {
             setEnvironment(Environment.Staging)
             onConfig {
                 refreshRate = 15_000L

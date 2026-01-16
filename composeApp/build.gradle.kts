@@ -1,4 +1,3 @@
-import io.kotzilla.gradle.ext.KotzillaKeyGeneration
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -98,14 +97,11 @@ dependencies {
 }
 
 kotzilla {
-    displayLogs = true
     site = "https://gateway-staging.kotzilla.io"
     projectFile = "kotzilla-staging.json"
 
     // KMP app version
     versionName = "1.0-TEST-20251007"
 
-    //needed for Compose MP
-    keyGeneration = KotzillaKeyGeneration.COMPOSE
-    composeInstrumentation = true
+    displayLogs = true
 }
