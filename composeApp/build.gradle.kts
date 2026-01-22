@@ -99,11 +99,11 @@ dependencies {
 
 kotzilla {
     displayLogs = true
-    site = "https://gateway-staging.kotzilla.io"
-    projectFile = "kotzilla-staging.json"
+//    site = "https://gateway-staging.kotzilla.io"
+//    projectFile = "kotzilla-staging.json"
 
     // KMP app version
-    versionName = "1.0-TEST-20251007"
+    versionName = "1.0-20260122"
 
     //needed for Compose MP
     keyGeneration = KotzillaKeyGeneration.COMPOSE

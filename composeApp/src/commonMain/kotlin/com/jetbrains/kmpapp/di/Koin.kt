@@ -52,10 +52,11 @@ fun initKoin(koinConfig : KoinAppDeclaration? = null) {
     startKoin {
         includes(koinConfig)
         analytics {
-            setEnvironment(Environment.Staging)
+//            setEnvironment(Environment.Staging)
             onConfig {
                 refreshRate = 15_000L
                 useDebugLogs = true
+                useIosCrashReport = true
             }
         }
 

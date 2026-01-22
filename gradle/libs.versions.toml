@@ -10,7 +10,7 @@ ktor = "3.3.3"
 materialIconsCore = "1.7.3"
 navigationCompose = "2.9.1"
 lifecycleCompose = "2.9.6"
-kotzilla = "2.0.0-RC1"
+kotzilla = "2.0.1-RC4"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
