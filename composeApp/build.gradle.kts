@@ -61,7 +61,7 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)
 
-            implementation(libs.kotzilla.sdk.compose)
+//            implementation(libs.kotzilla.sdk.compose)
         }
     }
 }
@@ -99,13 +99,13 @@ dependencies {
 
 kotzilla {
     displayLogs = true
-//    site = "https://gateway-staging.kotzilla.io"
+    site = "https://gateway-staging.kotzilla.io"
 //    projectFile = "kotzilla-staging.json"
 
     // KMP app version
-    versionName = "1.0-20260122"
+    versionName = "1.0-20260206"
 
     //needed for Compose MP
-    keyGeneration = KotzillaKeyGeneration.COMPOSE
-    composeInstrumentation = true
+//    keyGeneration = KotzillaKeyGeneration.COMPOSE
+//    composeInstrumentation = true
 }
